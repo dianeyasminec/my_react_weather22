@@ -27,15 +27,17 @@ function handleOnClick(){
 
   return (
     <div className={appClass}>
-      <header >
+     
    <h1 className="lead text-start text-warning display-6 my-3 ">
     Weather Application
     </h1>
+    <div className='d-grid justify-content-end  py-2'>
     <Button className=" btn-warning "
             onClick={handleOnClick}>
       {isDark? 'Dark Mode' : 'Light Mode'}
       </Button>
-    </header>
+      </div>
+   
 <Container > 
   <div className="content">
   <div className="info-container">

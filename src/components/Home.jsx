@@ -1,40 +1,57 @@
 import React,{useState, useEffect} from 'react'
-import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
 export default function Home() {
 
-    const [weather, setWeather] = useState([])
-
+    const [isDark, setIsDark] = useState(false)
+    const appClass = isDark ? "App dark" : "App light"
     
 
-    useEffect( ()=>{
-    const apiKey =  '1dc17c4f6cb7425a7f108ce2e2652ee4'
-    const city = 'Paris'  
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-     .then(response =>{
-      if(!response.ok){
-        throw Error('Could not fetch')
-      }
-      console.log(response)
-      return response.json()
-     })
-     .then(data =>{
-      setWeather(data)
-     })
-},[])
+useEffect(()=>{
+ 
+  const API_key = 'b13949e909670fa4142b477738e1435a';
 
-   console.log(weather)
+  fetch(`api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=${API_key}`)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+})    
 
-       
+function handleOnClick(){
+  setIsDark((isDark)=> !isDark)
+}
 
   return (
-    <div>
-   <h1 className="lead text-center text-primary display-5 my-3">
+    <div className={appClass}>
+      <header>
+   <h1 className="lead text-start text-warning display-6 my-3">
     Weather Application
     </h1>
-<Container> 
+    <Button className="btn btn-warning text-right"
+            onClick={handleOnClick}>
+      {isDark? 'Dark Mode' : 'Light Mode'}
+      </Button>
+    </header>
+{/* <Container > 
+  <div className="content">
+  <div className="info-container">
+  <h1>Today</h1>
+  <div className="details">
+          <div className="clouds">
+              {/* <p className="celsius">{Math.ceil(weather.main.temp - 273.15)} °C </p>
+              <div className="cloud-icon"> {iconName}</div> */}
+              {/* <p className='time'>{new Date()}</p>
+           </div>
 
-</Container>
-    </div>
+           <div className="more-info"> 
+              <p></p>
+           </div>
+
+  </div>
+  </div>
+  </div>
+</Container> */ }
+    
+</div>
   )
 }

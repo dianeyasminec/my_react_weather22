@@ -83,3 +83,9 @@ body {
   border-radius: 10px;
 }
 
+.btn{
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}

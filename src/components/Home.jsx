@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import Button from 'react-bootstrap/Button';
+import { Button, Container } from 'react-bootstrap';
 
 export default function Home() {
 
@@ -10,12 +10,13 @@ export default function Home() {
 useEffect(()=>{
  
   const API_key = 'b13949e909670fa4142b477738e1435a';
+  const city = 'Houston'
 
-  fetch(`api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=${API_key}`)
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`)
     .then(response => response.json())
     .then(response => console.log(response))
     .catch(err => console.error(err));
-})    
+},[])    
 
 function handleOnClick(){
   setIsDark((isDark)=> !isDark)
@@ -23,11 +24,11 @@ function handleOnClick(){
 
   return (
     <div className={appClass}>
-      <header>
-   <h1 className="lead text-start text-warning display-6 my-3">
+      <header >
+   <h1 className="lead text-start text-warning display-6 my-3 ">
     Weather Application
     </h1>
-    <Button className="btn btn-warning text-right"
+    <Button className=" btn-warning "
             onClick={handleOnClick}>
       {isDark? 'Dark Mode' : 'Light Mode'}
       </Button>
@@ -38,9 +39,9 @@ function handleOnClick(){
   <h1>Today</h1>
   <div className="details">
           <div className="clouds">
-              {/* <p className="celsius">{Math.ceil(weather.main.temp - 273.15)} °C </p>
-              <div className="cloud-icon"> {iconName}</div> */}
-              {/* <p className='time'>{new Date()}</p>
+               <p className="celsius">{Math.ceil(weather.main.temp - 273.15)} °C </p>
+              <div className="cloud-icon"> {iconName}</div> 
+               <p className='time'>{new Date()}</p>
            </div>
 
            <div className="more-info"> 
@@ -50,7 +51,7 @@ function handleOnClick(){
   </div>
   </div>
   </div>
-</Container> */ }
+</Container>  */}
     
 </div>
   )

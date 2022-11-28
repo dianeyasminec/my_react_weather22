@@ -1,4 +1,4 @@
-/* @media only screen and (max-width: 1024px) */
+
 
 .info-container {
     border-radius: 1rem;
@@ -8,7 +8,7 @@
     padding-left: 5%;
     box-shadow: var(--profileShadow);
     z-index: 100;
-    background: cornsilk
+    /* background: cornsilk */
 }
 
 .clouds,.details {
